@@ -84,9 +84,25 @@ for i in range(len(points)):
 		blue += [points[i]]
 	else:
 		green += [points[i]]
+"""
 plt.scatter(*zip(*red), s=0.1, color="red")
 plt.scatter(*zip(*blue), s=0.1, color="blue")
 plt.scatter(*zip(*green), s=0.1, color="green")
+plt.axis('equal')
+plt.axis('off')
+marker='.'
+plt.show()
+"""
+
+#1f)
+col = []
+col += [np.zeros(3)]
+print(col)
+for i in range(len(points)-1):
+	col += [(col[i] + colors[i])/2]
+print(len(col))
+col = np.asarray(col)
+plt.scatter(*zip(*points), c=col[:,0], s=0.1)				# Needed to use col[:,0] as it seems different versions of Python accept different types of color input.
 plt.axis('equal')
 plt.axis('off')
 marker='.'
