@@ -61,7 +61,7 @@ class ChaosGame:
 
 	def show(self, show =1):
 		"""Added a predefined parameter show (with 1 for true, 0 for false) to be able to use the show method in savepng."""
-		plt.scatter(*zip(*self.x), s=0.2)
+		plt.scatter(*zip(*self.x), s=0.1)
 		plt.axis('equal')
 		plt.axis('off')
 		marker='.'
@@ -78,12 +78,13 @@ class ChaosGame:
 			o = outfile + ".png"
 		self.show(0)
 		plt.savefig(o, dpi = 300)
+		plt.close()
 
 
 
 if __name__ == "__main__":
 	c = []
-	n3 =ChaosGame(2, 0.5)
+	n3 =ChaosGame(3, 0.5)
 	n4 =ChaosGame(4, 0.4)
 	n5 =ChaosGame(5, 0.5)
 	n6 =ChaosGame(6, 0.4)
@@ -106,3 +107,28 @@ if __name__ == "__main__":
 	n3.iterate(10000)
 	n3.show()
 	n3.savepng("plot_ngon")
+
+	#2i)
+	nn3 = ChaosGame(3, 0.5)
+	nn4 = ChaosGame(4, 1./3)
+	nn5 = ChaosGame(5, 1./3)
+	nn5_ = ChaosGame(5, 3./8)
+	nn6 = ChaosGame(6, 1./3)
+	
+	nn3.iterate(100000)
+	nn4.iterate(100000)
+	nn5.iterate(100000)
+	nn5_.iterate(100000)
+	nn6.iterate(100000)
+
+	import os
+	os.chdir(r'C:\Users\Eva\IN1910\project3_evasda\figures')
+
+	nn3.savepng("chaos1")
+	nn4.savepng("chaos2")
+	nn5.savepng("chaos3")
+	nn5_.savepng("chaos4")
+	nn6.savepng("chaos5")
+
+	#import os
+	#os.chdir(r'C:\Users\Eva\IN1910\project3_evasda\figures')
