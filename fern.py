@@ -13,28 +13,38 @@ class AffineTransform():
 		self.f = f
 
 	def __call__(self, x, y):
-		mult = np.array([[a, b], [c, d]])
-		addit = np.array([e, f])
-		xy = np.array([x, y])
-		transform = mult*xy + addit
-	
+		x_ = self.a*x + self.b*y + self.e
+		y_ = self.c*x + self.d*y + self.f
+		return [x_, y_]
 
 
 
 if __name__ == "__main__":
-	f1 = AffineTransform(0,0,0,0.16,0,0)
-	f2 = AffineTransform(0.85,0.04,-0.04,0.85,0,1.60)
-	f3 = AffineTransform(0.20,-0.26,0.23,0.22, 0, 1.60)
-	f4 = AffineTransform(-0.15,0.28,0.26,0.24,0,0.44)
+	functions = []
+	functions += [AffineTransform(0,0,0,0.16,0,0)]
+	functions += [AffineTransform(0.85,0.04,-0.04,0.85,0,1.60)]
+	functions += [AffineTransform(0.20,-0.26,0.23,0.22, 0, 1.60)]
+	functions += [AffineTransform(-0.15,0.28,0.26,0.24,0,0.44)]
+	def weighted_functions(x, y):
+		p_c = [0.1, 0.86, 0.93, 1.0]
+		r = np.random.random()
+		for i in range(len(p_c)):
+			if r < p_c[i]:
+				return functions[i](x, y)
 
-	p_ = []
-	p_ += 0.1
-	p_ += 0.86
-	p_ += 0.93
-	p_ += 1.0
+	def iterate(n):
+		x = []
+		x += [[0, 0]]
+		for i in range(n):
+			x += [weighted_functions(x[i][0], x[i][1])]
+		return x
 
-
-	r = np.random.random()
-	for j, p in enumerate(p_):
-		if r < p:
-			return functions[j]
+	xx = iterate(50000)
+	def plot_ngon():
+		"""Plots the generated Barnsley fern."""
+		plt.scatter(*zip(*xx), s=0.05, color="green")
+		plt.axis('equal')
+		plt.axis('off')
+		marker='.'
+		plt.show()
+	plot_ngon()

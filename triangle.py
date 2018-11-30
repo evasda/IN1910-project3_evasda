@@ -13,7 +13,6 @@ plt.axis('equal')
 plt.show()
 
 #1b)
-"""
 rand_ = np.zeros([1000, 3])
 x_0 = np.zeros([1000])
 
@@ -22,13 +21,12 @@ for i in range(1000):
 	for j in range(0,3):
 		rand_[i,j] = rand[j]/(rand[0]+rand[1]+rand[2])
 	x_0 = sum(rand_[i,]*corners)
-"""
 
 def tri(n):
+	""" Generates n points inside the triangle. Takes the number of iterations as input, returns list of points."""
 	x_0 = []
 	r = []
 	for i in range(n):
-		""" Generates n points inside the triangle. Takes the number of iterations as input, returns list of points."""
 		rand = random.random(3)
 		r += [rand/(rand[0]+rand[1]+rand[2])]
 		x_0 += [corners[0]*r[i][0] + corners[1]*r[i][1] + corners[2]*r[i][2]]
@@ -84,7 +82,7 @@ for i in range(len(points)):
 		blue += [points[i]]
 	else:
 		green += [points[i]]
-"""
+
 plt.scatter(*zip(*red), s=0.1, color="red")
 plt.scatter(*zip(*blue), s=0.1, color="blue")
 plt.scatter(*zip(*green), s=0.1, color="green")
@@ -92,7 +90,7 @@ plt.axis('equal')
 plt.axis('off')
 marker='.'
 plt.show()
-"""
+
 
 #1f)
 col = []

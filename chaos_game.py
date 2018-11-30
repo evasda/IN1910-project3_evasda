@@ -115,11 +115,11 @@ if __name__ == "__main__":
 	nn5_ = ChaosGame(5, 3./8)
 	nn6 = ChaosGame(6, 1./3)
 	
-	nn3.iterate(100000)
-	nn4.iterate(100000)
-	nn5.iterate(100000)
-	nn5_.iterate(100000)
-	nn6.iterate(100000)
+	nn3.iterate(10000)
+	nn4.iterate(10000)
+	nn5.iterate(10000)
+	nn5_.iterate(10000)
+	nn6.iterate(10000)
 
 	import os
 	os.chdir(r'C:\Users\Eva\IN1910\project3_evasda\figures')
