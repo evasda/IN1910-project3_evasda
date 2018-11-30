@@ -1,11 +1,10 @@
-
 import numpy as np
 import matplotlib.pyplot as plt
 from math import sin, pi
 from numpy import random
 
 #1a)
-
+"""Corners of equilateral triangle. """
 corners = np.array([(0,0),(0,1),(sin(pi/3),0.5)])
 
 plt.scatter(*zip(*corners))
@@ -13,15 +12,6 @@ plt.axis('equal')
 plt.show()
 
 #1b)
-rand_ = np.zeros([1000, 3])
-x_0 = np.zeros([1000])
-
-for i in range(1000):
-	rand = random.random(3)
-	for j in range(0,3):
-		rand_[i,j] = rand[j]/(rand[0]+rand[1]+rand[2])
-	x_0 = sum(rand_[i,]*corners)
-
 def tri(n):
 	""" Generates n points inside the triangle. Takes the number of iterations as input, returns list of points."""
 	x_0 = []
@@ -35,7 +25,6 @@ def tri(n):
 plt.scatter(*zip(*tri(1000)))
 plt.axis('equal')
 plt.show()
-
 
 #1c)
 
@@ -98,7 +87,7 @@ col += [np.zeros(3)]
 for i in range(len(points)-1):
 	col += [(col[i] + colors[i+1])/2]
 col = np.asarray(col)
-plt.scatter(*zip(*points), c=col[:,0], s=0.1)				# Needed to use col[:,0] as it seems different versions of Python accept different types of color input.
+plt.scatter(*zip(*points), c=col[:,0], s=0.1)
 plt.axis('equal')
 plt.axis('off')
 marker='.'
