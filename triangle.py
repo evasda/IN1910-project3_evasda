@@ -40,7 +40,6 @@ def points(n):
 
 
 #1d)
-
 plt.scatter(*zip(*points(10000)), s=0.1)
 plt.axis('equal')
 plt.axis('off')
@@ -49,7 +48,6 @@ plt.show()
 
 
 #1e)
-
 def points_col(n):
 	""" Takes the number of iterations as input, and returns the sequence of points as a list."""
 	j= np.random.randint(3)
